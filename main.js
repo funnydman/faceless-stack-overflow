@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name         Faceless Stack overflow
 // @namespace    http://tampermonkey.net/
-// @version      0.3
-// @description  try to take over the world!
-// @author       funnydman
-// @match        https://*/*
+// @version      0.4
+// @author       You
+// @match        https://stackoverflow.com/*
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
@@ -28,29 +27,27 @@ function sanitize_user_mention(comment_copy) {
 
 (function() {
     'use strict';
-    if (location.href.match("https://stackoverflow.com")) {
 
-        (document.head || document.documentElement).insertAdjacentHTML(
-            'beforeend',
-            '<style>.user-info, .list-reset { display: none!important; }</style>'
-        );
+    (document.head || document.documentElement).insertAdjacentHTML(
+        'beforeend',
+        '<style>.user-gravatar32, .user-details { display: none!important; }</style>'
+    );
 
-        window.onload = function () {
-            var comment_copy = document.getElementsByClassName("comment-copy");
-            var user_comments = document.getElementsByClassName("comment-user");
+    window.onload = function () {
+        var comment_copy = document.getElementsByClassName("comment-copy");
+        var user_comments = document.getElementsByClassName("comment-user");
 
-            make_comments_anonymous(user_comments);
-            sanitize_user_mention(comment_copy);
-            // user MutationObserver here
-            var show_comments_link = document.getElementsByClassName("js-show-link");
-            for (var k=0; k < show_comments_link.length; k++) {
-                show_comments_link[0].addEventListener("click", function(event) {
-                    setInterval(function (e) {
-                        make_comments_anonymous(user_comments);
-                        sanitize_user_mention(comment_copy);
-                    }, 0);
-                });
-            }
+        make_comments_anonymous(user_comments);
+        sanitize_user_mention(comment_copy);
+        // user MutationObserver here
+        var show_comments_link = document.getElementsByClassName("js-show-link");
+        for (var k=0; k < show_comments_link.length; k++) {
+            show_comments_link[k].addEventListener("click", function(event) {
+                setInterval(function (e) {
+                    make_comments_anonymous(user_comments);
+                    sanitize_user_mention(comment_copy);
+                }, 0);
+            });
         }
     }
 })();
