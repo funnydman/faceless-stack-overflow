@@ -6,4 +6,4 @@ Use Tampermonkey browser extension.
 
 ![screenshot](screenshots/1.png)
 
-There is no any user information is shown. Feel free to extend this script. Pull requests are welcome.
+There is no any user information shown. Feel free to extend this script. Pull requests are welcome.
