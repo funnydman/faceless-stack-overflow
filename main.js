@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Faceless Stack overflow
 // @namespace    http://tampermonkey.net/
-// @version      0.4
-// @author       You
+// @version      1.0
+// @author       funnydman
 // @match        https://stackoverflow.com/*
 // @grant        none
 // @run-at       document-start
