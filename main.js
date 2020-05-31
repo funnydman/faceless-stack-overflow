@@ -11,21 +11,20 @@
 // user block we could display none. It's faster!
 
 function make_comments_anonymous(comments) {
-    for (var j=0; j < comments.length; j++) {
+    for (var j = 0; j < comments.length; j++) {
         comments[j].innerText = "anonymous";
         comments[j].style.color = "green";
-        comments[j].removeAttribute("href");
     }
 }
 
 function sanitize_user_mention(comment_copy) {
     var regexp = /@\w+/;
-    for (var k=0; k < comment_copy.length; k ++) {
+    for (var k = 0; k < comment_copy.length; k++) {
         comment_copy[k].textContent = comment_copy[k].textContent.replace(regexp, "@anonymous");
     }
 }
 
-(function() {
+(function () {
     'use strict';
 
     (document.head || document.documentElement).insertAdjacentHTML(
@@ -40,9 +39,10 @@ function sanitize_user_mention(comment_copy) {
         make_comments_anonymous(user_comments);
         sanitize_user_mention(comment_copy);
         // user MutationObserver here
+        // add event on adding commits
         var show_comments_link = document.getElementsByClassName("js-show-link");
-        for (var k=0; k < show_comments_link.length; k++) {
-            show_comments_link[k].addEventListener("click", function(event) {
+        for (var k = 0; k < show_comments_link.length; k++) {
+            show_comments_link[k].addEventListener("click", function (event) {
                 setInterval(function (e) {
                     make_comments_anonymous(user_comments);
                     sanitize_user_mention(comment_copy);
