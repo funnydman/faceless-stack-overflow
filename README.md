@@ -1,7 +1,7 @@
 # faceless-stack-overflow
 Does not show user info of OP and answerer, don't go to the comparing trap
 
-Use Tampermonkey browser extension.
+> Use Tampermonkey browser extension. Simply load main.js script
 
 
 ![screenshot](screenshots/1.png)
